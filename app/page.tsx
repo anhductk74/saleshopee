@@ -19,6 +19,13 @@ export default function Home() {
   const [isCopied, setIsCopied] = useState(false);
   const invokeGuard = useRef(false);
 
+  function formatDisplayUrl(url: string) {
+    if (!url) return "";
+    if (url.length <= 48) return url;
+
+    return `${url.slice(0, 30)}...${url.slice(-12)}`;
+  }
+
   async function handleCreateLink() {
     if (invokeGuard.current) return;
     invokeGuard.current = true;
@@ -223,7 +230,9 @@ export default function Home() {
                   ) : null}
 
                   <div className="mt-4 break-all rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-6 text-slate-100 sm:text-base sm:leading-7">
-                    {resultUrl || "Mã giảm giá hoặc link ưu đãi sẽ hiển thị ở đây sau khi xem."}
+                    {resultUrl
+                      ? formatDisplayUrl(resultUrl)
+                      : "Mã giảm giá hoặc link ưu đãi sẽ hiển thị ở đây sau khi xem."}
                   </div>
                 </div>
               </div>
