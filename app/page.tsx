@@ -111,6 +111,22 @@ export default function Home() {
               </p>
             </div>
 
+            <div className="max-w-2xl rounded-3xl border border-orange-200/80 bg-white/85 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
+              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-600">
+                Hướng dẫn lấy mã giảm giá Facebook
+              </div>
+              <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-700 sm:text-base">
+                <li>➡️Bước 1: Vào Shopee lấy link sản phẩm cần mua</li>
+                <li>➡️Bước 2: Đổi link Shopee tại &gt;&gt; <a className="font-semibold text-orange-700 underline decoration-orange-300 underline-offset-4" href="https://sandealvip.com/" target="_blank" rel="noopener noreferrer">https://sandealvip.com/</a></li>
+                <li>➡️Bước 3: Cmt link đã tạo tại bài viết bất kỳ trên Facebook</li>
+                <li>➡️Bước 4: Click vào link vừa cmt rồi chọn voucher đặt mua.</li>
+              </ol>
+              <div className="mt-4 space-y-2 rounded-2xl border border-orange-100 bg-orange-50/60 p-3 text-sm leading-6 text-slate-700 sm:text-base">
+                <p>🆘Lưu ý: Nếu không có mã thì có thể acc bị lọc hoặc sản phẩm bị lọc mã.</p>
+                <p>✅ Khung giờ: ► 0H, 9H, 15H, 20H back lượt (thường lên trễ 10 phút)</p>
+              </div>
+            </div>
+
             <div className="hidden sm:grid gap-3 sm:grid-cols-3">
               {[
                 ["Nhanh", "Dán link và xem ưu đãi chỉ trong vài giây."],

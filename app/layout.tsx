@@ -73,7 +73,7 @@ export const seoMetadata: Metadata = {
     images: [`${SITE_URL}/og-image.svg`],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
   },
 };
@@ -88,6 +88,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#fb923c" />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
 
