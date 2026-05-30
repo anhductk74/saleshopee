@@ -91,7 +91,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="alternate icon" href="/favicon.svg" />
         <meta name="theme-color" content="#fb923c" />
       </head>
       <body className="min-h-full flex flex-col">
