@@ -40,6 +40,7 @@ export const seoMetadata: Metadata = {
   "mã giảm giá TikTok Shop",
   "deal giá tốt",
   "săn deal online",
+  "săn deal vip",
   "coupon mua sắm"
 ],
   authors: [{ name: "CustomLink" }],
