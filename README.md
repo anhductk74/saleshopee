@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Google Sheets click log setup
+
+The click log API writes to this spreadsheet:
+
+- https://docs.google.com/spreadsheets/d/1W6xGDw1zgjoBsI-GgIjvhT2wKpxfefTqTmLtX2IGExs/edit?gid=231240412#gid=231240412
+
+Required environment variables for local and Vercel:
+
+- GOOGLE_SHEETS_CLIENT_EMAIL: service account email, for example name@project-id.iam.gserviceaccount.com
+- GOOGLE_SHEETS_PRIVATE_KEY: private key from service account JSON, keep line breaks as \n
+- GOOGLE_SHEETS_SPREADSHEET_ID: spreadsheet id, for example 1W6xGDw1zgjoBsI-GgIjvhT2wKpxfefTqTmLtX2IGExs
+- GOOGLE_SHEETS_GID: tab gid, default is 231240412
+
+Backward compatibility is kept for old variable names GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY.
+
+Before using the API, share the spreadsheet with the service account email and grant Editor access.

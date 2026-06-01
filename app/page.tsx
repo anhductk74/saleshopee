@@ -16,6 +16,7 @@ type ApiResponse = {
 export default function Home() {
   const [inputUrl, setInputUrl] = useState("");
   const [resultUrl, setResultUrl] = useState("");
+  const [sourceInputUrl, setSourceInputUrl] = useState("");
   const [statusMessage, setStatusMessage] = useState(
     "Dán link sản phẩm Shopee để xem ưu đãi phù hợp."
   );
@@ -37,6 +38,7 @@ export default function Home() {
 
     if (!trimmedUrl) {
       setResultUrl("");
+      setSourceInputUrl("");
       setStatusMessage("Vui lòng nhập link Shopee để xem mã giảm giá và ưu đãi.");
       invokeGuard.current = false;
       return;
@@ -69,11 +71,13 @@ export default function Home() {
       }
 
       setResultUrl(data.affiliateLink);
+      setSourceInputUrl(trimmedUrl);
       setInputUrl("");
       setStatusMessage("Đã có link ưu đãi. Bạn có thể copy ngay bên dưới.");
     } catch (error) {
       const message = error instanceof Error ? error.message : "Có lỗi xảy ra.";
       setResultUrl("");
+      setSourceInputUrl("");
       setStatusMessage(message);
     } finally {
       setIsLoading(false);
@@ -87,27 +91,19 @@ export default function Home() {
     }
 
     await navigator.clipboard.writeText(resultUrl);
-    setIsCopied(true);
-    window.setTimeout(() => setIsCopied(false), 1800);
-  }
 
-  function handlePromotionClick() {
-    const payload = JSON.stringify({ link: FACEBOOK_LINK });
-    const blob = new Blob([payload], { type: "application/json" });
-
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(CLICK_LOG_API, blob);
-      return;
+    if (sourceInputUrl) {
+      fetch(CLICK_LOG_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ link: sourceInputUrl }),
+      }).catch(() => {});
     }
 
-    fetch(CLICK_LOG_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: payload,
-      keepalive: true,
-    }).catch(() => {});
+    setIsCopied(true);
+    window.setTimeout(() => setIsCopied(false), 1800);
   }
 
   
@@ -260,7 +256,6 @@ export default function Home() {
                     {resultUrl ? (
                     <a
                         href={FACEBOOK_LINK}
-                        onClick={handlePromotionClick}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
