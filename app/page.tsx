@@ -2,6 +2,9 @@
 
 import { useState, useRef } from "react";
 
+const FACEBOOK_LINK =
+  "https://www.facebook.com/groups/1313703766898681/posts/1313708710231520/?__cft__[0]=AZaTI8mQjzHWCNtLTrvPChbmdpuTb0OGWeKX9dvNVhFzaIWb0GEcH1Nms5lFuYlWzu-2t7z7WhkOsIswrBmnfK5X8SlYAcww1iCpT7UjYEnrDY6Bw-Y1WJY6P2QR7RDZ-kSlGLW3HgKIvQq6ln3P9G4fhPeji8RI6keXdGgQ2h6LQzU6YJsPCPbDLfR09_TdPL7Kd_z24UHJ7xzLQyHWxHWI&__tn__=-UK-R";
+
 type ApiResponse = {
   success?: boolean;
   url?: string;
@@ -118,7 +121,7 @@ export default function Home() {
               <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-700 sm:text-base">
                 <li>➡️Bước 1: Vào Shopee lấy link sản phẩm cần mua</li>
                 <li>➡️Bước 2: Đổi link Shopee tại &gt;&gt; <a className="font-semibold text-orange-700 underline decoration-orange-300 underline-offset-4" href="https://sandealvip.com/" target="_blank" rel="noopener noreferrer">https://sandealvip.com/</a></li>
-                <li>➡️Bước 3: Cmt link đã tạo tại bài viết bất kỳ trên Facebook</li>
+                <li>➡️Bước 3: Cmt link đã tạo tại bài viết Facebook này &gt;&gt; <a className="font-semibold text-orange-700 underline decoration-orange-300 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a></li>
                 <li>➡️Bước 4: Click vào link vừa cmt rồi chọn voucher đặt mua.</li>
               </ol>
               <div className="mt-4 space-y-2 rounded-2xl border border-orange-100 bg-orange-50/60 p-3 text-sm leading-6 text-slate-700 sm:text-base">
@@ -236,12 +239,12 @@ export default function Home() {
 
                     {resultUrl ? (
                     <a
-                      href={resultUrl}
+                        href={FACEBOOK_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
-                      Mở bằng app Shopee
+                        Mở liên kết Facebook
                     </a>
                   ) : null}
 
