@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const AFFILIATE_ID = "17378790583";
+const AFFILIATE_ID = "17358420175";
 const AFFILIATE_API_URL = "https://addlivetag.com/short-link.php";
 
 export async function GET(request: Request) {
