@@ -119,96 +119,64 @@ export default function Home() {
               Săn mã giảm giá Shopee hôm nay
             </div>
 
-            <div className="space-y-3 lg:space-y-5">
-              <h1 className="max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                Nhập link Shopee, xem ngay ưu đãi và mã giảm giá để mua tiết kiệm hơn.
-              </h1>
-              <p className="max-w-xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-                Chỉ cần dán link sản phẩm, hệ thống sẽ tạo đường dẫn ưu đãi
-                gọn đẹp để bạn mở xem giá, mã giảm và chọn mua nhanh hơn.
-                Giao diện thân thiện, dễ dùng trên điện thoại lẫn máy tính.
-              </p>
-            </div>
+           
 
-            <div className="max-w-2xl rounded-3xl border border-orange-200/80 bg-white/85 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
-              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-600">
-                Hướng dẫn lấy mã giảm giá Facebook
+            <div className="max-w-2xl rounded-3xl border-2 border-orange-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-5 shadow-[0_24px_60px_rgba(249,115,22,0.26)] backdrop-blur">
+              <div className="inline-flex w-fit items-center rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white">
+                Hướng dẫn nhanh
               </div>
-              <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-700 sm:text-base">
-                <li>➡️Bước 1: Vào Shopee lấy link sản phẩm cần mua</li>
-                <li>➡️Bước 2: Đổi link Shopee tại &gt;&gt; <a className="font-semibold text-orange-700 underline decoration-orange-300 underline-offset-4" href="https://sandealvip.com/" target="_blank" rel="noopener noreferrer">https://sandealvip.com/</a></li>
-                <li>➡️Bước 3: Cmt link đã tạo tại bài viết Facebook này &gt;&gt; <a className="font-semibold text-orange-700 underline decoration-orange-300 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a></li>
-                <li>➡️Bước 4: Click vào link vừa cmt rồi chọn voucher đặt mua.</li>
+              <div className="mt-3 text-base font-semibold text-slate-900 sm:text-lg">
+                Làm theo 4 bước sau để thấy mã nhanh hơn
+              </div>
+              <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-800 sm:text-base">
+                <li><span className="font-bold text-orange-700">B1.</span> Vào Shopee và copy link sản phẩm cần mua.</li>
+                <li><span className="font-bold text-orange-700">B2.</span> Dán link vào ô dán link bên phải rồi bấm Lấy liên kết khuyến mãi.</li>
+                <li><span className="font-bold text-orange-700">B3.</span> Copy link kết quả và cmt tại bài viết: <a className="font-semibold text-orange-700 underline decoration-orange-400 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a>.</li>
+                <li><span className="font-bold text-orange-700">B4.</span> Mở lại link đã cmt để chọn voucher và đặt mua.</li>
               </ol>
-              <div className="mt-4 space-y-2 rounded-2xl border border-orange-100 bg-orange-50/60 p-3 text-sm leading-6 text-slate-700 sm:text-base">
-                <p>🆘Lưu ý: Nếu không có mã thì có thể acc bị lọc hoặc sản phẩm bị lọc mã.</p>
-                <p>✅ Khung giờ: ► 0H, 9H, 15H, 20H back lượt (thường lên trễ 10 phút)</p>
+              <div className="mt-4 rounded-2xl border border-orange-300 bg-orange-100 px-3 py-2 text-sm font-medium text-orange-900">
+                Lưu ý: Nếu chưa thấy mã, hãy thử lại vào các khung giờ 0h, 9h, 15h, 20h.
               </div>
-            </div>
-
-            <div className="hidden sm:grid gap-3 sm:grid-cols-3">
-              {[
-                ["Nhanh", "Dán link và xem ưu đãi chỉ trong vài giây."],
-                ["Dễ dùng", "Tối giản, rõ ràng, không cần thao tác phức tạp."],
-                ["Tiết kiệm", "Hướng đến trải nghiệm săn deal cho khách mua."],
-              ].map(([title, description]) => (
-                <div
-                  key={title}
-                  className="rounded-3xl border border-white/70 bg-white/75 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur"
-                >
-                  <div className="text-sm font-semibold text-slate-950">{title}</div>
-                  <div className="mt-2 text-sm leading-6 text-slate-600">
-                    {description}
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
 
           <div className="relative order-1 lg:order-2">
-            <div className="hidden sm:block absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-orange-200 via-white to-blue-200 blur-2xl" />
-            <div className="relative z-20 rounded-[2rem] border border-white/70 bg-white/92 p-4 shadow-[0_30px_100px_rgba(15,23,42,0.16)] backdrop-blur-xl sm:p-6 lg:p-7">
+            <div className="hidden sm:block absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-orange-300 via-orange-100 to-amber-200 blur-2xl" />
+            <div className="relative z-20 rounded-[2rem] border-2 border-orange-200 bg-white/95 p-4 shadow-[0_30px_100px_rgba(249,115,22,0.2)] backdrop-blur-xl sm:p-6 lg:p-7">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-orange-600">
-                    Xem ưu đãi
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">
+                    TẠO LINK ƯU ĐÃI SHOPEE
                   </p>
                   <h2 className="mt-2 text-xl font-semibold text-slate-950 sm:text-2xl">
-                    Dán link sản phẩm bạn đang quan tâm
+                    Nhớ làm theo hướng dẫn để lấy mã nhanh nhất nhé!
                   </h2>
                 </div>
               </div>
 
-              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {[
-                  ["Mã giảm giá", "Gợi ý đường dẫn để xem ưu đãi tốt hơn."],
-                  ["Flash sale", "Hiển thị theo phong cách săn deal dễ nhìn."],
-                  ["Mua nhanh", "Mở link, xem giá, copy và dùng ngay."],
-                ].map(([title, description]) => (
-                  <div
-                    key={title}
-                    className="rounded-2xl border border-orange-100 bg-orange-50/70 p-3"
-                  >
-                    <div className="text-sm font-semibold text-slate-950">
-                      {title}
-                    </div>
-                    <div className="mt-1 text-xs leading-5 text-slate-600">
-                      {description}
-                    </div>
+              <div className="mt-4 rounded-2xl border-2 border-orange-300 bg-gradient-to-r from-amber-100 to-orange-100 p-3 sm:p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="text-sm font-bold uppercase tracking-[0.12em] text-orange-800">
+                    hướng dẫn tạo link
                   </div>
-                ))}
+                </div>
+                <ol className="mt-3 space-y-1.5 text-sm font-medium text-slate-800">
+                  <li>1. Copy link Shopee.</li>
+                  <li>2. Dán vào ô bên dưới và bấm tạo link.</li>
+                  <li>3. Copy kết quả rồi cmt lên Facebook.</li>
+                </ol>
               </div>
 
               <div className="mt-6 space-y-4">
                 <label className="block space-y-2">
-                  <span className="text-sm font-medium text-slate-700 sm:text-base">
-                    Link sản phẩm Shopee
+                  <span className="text-sm font-semibold text-slate-800 sm:text-base">
+                    Dán link sản phẩm Shopee vào đây
                   </span>
                   <input
                     value={inputUrl}
                     onChange={(event) => setInputUrl(event.target.value)}
                     placeholder="https://s.shopee.vn/..."
-                    className="pointer-events-auto h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100 sm:h-16 sm:text-lg"
+                    className="pointer-events-auto h-14 w-full rounded-2xl border-2 border-orange-300 bg-orange-50 px-4 text-base text-slate-900 outline-none transition placeholder:text-orange-400 focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-200 sm:h-16 sm:text-lg"
                   />
                 </label>
 
@@ -217,7 +185,7 @@ export default function Home() {
                       type="button"
                       onClick={handleCreateLink}
                       disabled={isLoading}
-                      className="w-full rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition disabled:opacity-60 disabled:cursor-wait"
+                      className="w-full rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_24px_rgba(249,115,22,0.28)] transition hover:brightness-105 disabled:opacity-60 disabled:cursor-wait"
                     >
                       {isLoading ? "Đang tạo liên kết..." : "Lấy liên kết khuyến mãi"}
                     </button>

@@ -13,36 +13,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mã Giảm Giá Shopee & Deal Hot Mỗi Ngày",
-  description: "Cập nhật mã giảm giá Shopee, voucher mới nhất, mã freeship, deal hot và khuyến mãi hấp dẫn mỗi ngày.",
+  title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
+  description:
+    "Cập nhật mã giảm giá Shopee hôm nay, voucher Shopee mới nhất, mã freeship, flash sale, deal hot và ưu đãi tại sandealvip.com.",
 };
 
-const SITE_URL = "https://sandealvip.com"; // <-- Thay bằng domain thật của bạn
+const SITE_URL = "https://sandealvip.com";
 
 export const seoMetadata: Metadata = {
-  title: "Mã Giảm Giá Shopee & Deal Hot Mỗi Ngày",
+  title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
   description:
-    "Cập nhật mã giảm giá Shopee, voucher mới nhất, mã freeship, deal hot và khuyến mãi hấp dẫn mỗi ngày.",
+    "Cập nhật mã giảm giá Shopee hôm nay, voucher Shopee mới nhất, mã freeship, flash sale, deal hot và ưu đãi tại sandealvip.com.",
   metadataBase: new URL(SITE_URL),
   applicationName: "Săn Mã Shopee",
   keywords: [
-  "mã giảm giá Shopee",
-  "voucher Shopee hôm nay",
-  "mã giảm giá Shopee mới nhất",
-  "mã freeship Shopee",
-  "deal hot Shopee",
-  "săn sale Shopee",
-  "khuyến mãi Shopee",
-  "voucher giảm giá Shopee",
-  "flash sale Shopee",
-  "ưu đãi Shopee",
-  "mã giảm giá Lazada",
-  "mã giảm giá TikTok Shop",
-  "deal giá tốt",
-  "săn deal online",
-  "săn deal vip",
-  "coupon mua sắm"
-],
+    "mã giảm giá shopee",
+    "mã giảm giá shopee hôm nay",
+    "mã giảm giá shopee mới nhất",
+    "voucher shopee",
+    "voucher shopee hôm nay",
+    "voucher shopee mới nhất",
+    "mã freeship shopee",
+    "mã hoàn xu shopee",
+    "flash sale shopee",
+    "deal hot shopee",
+    "săn sale shopee",
+    "ưu đãi shopee",
+    "khuyến mãi shopee",
+    "coupon shopee",
+    "deal shopee",
+    "săn deal shopee",
+    "mã giảm giá lazada",
+    "mã giảm giá tiktok shop",
+    "coupon mua sắm",
+    "deal giá tốt",
+    "sandealvip.com",
+    "sandealvip",
+    "săn deal vip",
+    "mã giảm giá online",
+    "voucher giảm giá",
+  ],
   authors: [{ name: "CustomLink" }],
   robots: {
     index: true,
@@ -57,9 +67,9 @@ export const seoMetadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mã Giảm Giá Shopee & Deal Hot Mỗi Ngày",
+    title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
     description:
-      "Dán link Shopee để lấy link ưu đãi — nhanh, đơn giản, chuẩn SEO.",
+      "Dán link Shopee để lấy link ưu đãi nhanh, đơn giản tại sandealvip.com.",
     url: SITE_URL,
     siteName: "Mã Giảm Giá Shopee & Deal Hot Mỗi Ngày",
     images: [{ url: `${SITE_URL}/og-image.svg`, width: 1200, height: 630 }],
@@ -68,9 +78,9 @@ export const seoMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mã Giảm Giá Shopee & Deal Hot Mỗi Ngày",
+    title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
     description:
-      "Dán link Shopee để lấy link ưu đãi — nhanh, đơn giản, chuẩn SEO.",
+      "Dán link Shopee để lấy link ưu đãi nhanh, đơn giản tại sandealvip.com.",
     images: [`${SITE_URL}/og-image.svg`],
   },
   icons: {
@@ -86,7 +96,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
