@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const AFFILIATE_ID = "17358420175";
+const AFFILIATE_ID = "17315490379";
 const AFFILIATE_API_URL = "https://addlivetag.com/short-link.php";
 
 const TRACKING_PARAMS_TO_REMOVE = new Set([
