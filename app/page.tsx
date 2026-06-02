@@ -223,12 +223,12 @@ export default function Home() {
 
                     {resultUrl ? (
                     <a
-                        href={FACEBOOK_LINK}
+                        href={resultUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
-                        Mở liên kết Facebook
+                        Mở bằng app Shopee
                     </a>
                   ) : null}
 
