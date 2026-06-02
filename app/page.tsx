@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 const FACEBOOK_LINK =
   "https://www.facebook.com/groups/1313703766898681/posts/1313708710231520/?__cft__[0]=AZaTI8mQjzHWCNtLTrvPChbmdpuTb0OGWeKX9dvNVhFzaIWb0GEcH1Nms5lFuYlWzu-2t7z7WhkOsIswrBmnfK5X8SlYAcww1iCpT7UjYEnrDY6Bw-Y1WJY6P2QR7RDZ-kSlGLW3HgKIvQq6ln3P9G4fhPeji8RI6keXdGgQ2h6LQzU6YJsPCPbDLfR09_TdPL7Kd_z24UHJ7xzLQyHWxHWI&__tn__=-UK-R";
@@ -104,6 +104,18 @@ export default function Home() {
 
     setIsCopied(true);
     window.setTimeout(() => setIsCopied(false), 1800);
+  }
+
+  function handleOpenShopee() {
+    if (!resultUrl) return;
+
+    const linkToLog = sourceInputUrl || resultUrl;
+
+    fetch(CLICK_LOG_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ link: linkToLog }),
+    }).catch(() => {});
   }
 
   
@@ -226,6 +238,7 @@ export default function Home() {
                         href={resultUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={handleOpenShopee}
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
                         Mở bằng app Shopee
