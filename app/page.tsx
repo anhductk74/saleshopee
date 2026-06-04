@@ -118,7 +118,9 @@ export default function Home() {
     }).catch(() => {});
   }
 
-  
+  function handleOpenFacebookPost() {
+    window.open(FACEBOOK_LINK, "_blank", "noopener,noreferrer");
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(251,146,60,0.22),_transparent_34%),radial-gradient(circle_at_right,_rgba(59,130,246,0.18),_transparent_28%),linear-gradient(180deg,_#fffdf8_0%,_#fff7ed_100%)] text-slate-950">
@@ -142,9 +144,14 @@ export default function Home() {
               </div>
               <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-800 sm:text-base">
                 <li><span className="font-bold text-orange-700">B1.</span> Vào Shopee và copy link sản phẩm cần mua.</li>
-                <li><span className="font-bold text-orange-700">B2.</span> Dán link vào ô dán link bên phải rồi bấm Lấy liên kết khuyến mãi.</li>
-                <li><span className="font-bold text-orange-700">B3.</span> Copy link kết quả và cmt tại bài viết: <a className="font-semibold text-orange-700 underline decoration-orange-400 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a>.</li>
+                <li><span className="font-bold text-orange-700">B2.</span> Dán link vào rồi bấm Lấy liên kết khuyến mãi.</li>
+                <li><span className="font-bold text-orange-700">B3.</span> Copy link kết quả và cmt tại bài viết: <a className="font-semibold text-orange-700 underline decoration-orange-400 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a> (Có thể cmt ẩn danh).</li>
                 <li><span className="font-bold text-orange-700">B4.</span> Mở lại link đã cmt để chọn voucher và đặt mua.</li>
+                <li>
+                  <span className="inline-block rounded-lg bg-orange-50 border border-orange-200 px-3 py-2 text-sm font-semibold text-orange-800">
+                    Có thể mở trực tiếp link qua ứng dụng Shopee để có 1 số ưu đãi khác
+                  </span>
+                </li>
               </ol>
               <div className="mt-4 rounded-2xl border border-orange-300 bg-orange-100 px-3 py-2 text-sm font-medium text-orange-900">
                 Lưu ý: Nếu chưa thấy mã, hãy thử lại vào các khung giờ 0h, 9h, 15h, 20h.
@@ -160,24 +167,9 @@ export default function Home() {
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">
                     TẠO LINK ƯU ĐÃI SHOPEE
                   </p>
-                  <h2 className="mt-2 text-xl font-semibold text-slate-950 sm:text-2xl">
-                    Nhớ làm theo hướng dẫn để lấy mã nhanh nhất nhé!
-                  </h2>
                 </div>
               </div>
 
-              <div className="mt-4 rounded-2xl border-2 border-orange-300 bg-gradient-to-r from-amber-100 to-orange-100 p-3 sm:p-4">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="text-sm font-bold uppercase tracking-[0.12em] text-orange-800">
-                    hướng dẫn tạo link
-                  </div>
-                </div>
-                <ol className="mt-3 space-y-1.5 text-sm font-medium text-slate-800">
-                  <li>1. Copy link Shopee.</li>
-                  <li>2. Dán vào ô bên dưới và bấm tạo link.</li>
-                  <li>3. Copy kết quả rồi cmt lên Facebook.</li>
-                </ol>
-              </div>
 
               <div className="mt-6 space-y-4">
                 <label className="block space-y-2">
@@ -203,54 +195,47 @@ export default function Home() {
                     </button>
                   </div>
 
-                  <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/80 p-4 sm:p-5">
-                  <div className="text-sm font-medium text-slate-700">
-                    Thông báo ưu đãi
-                  </div>
-                  <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-                    {statusMessage}
-                  </p>
-                </div>
+                  
 
-                <div className="rounded-3xl border border-slate-200 bg-slate-950 p-4 text-white shadow-inner shadow-slate-950/20 sm:p-5">
-                  <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+                {resultUrl && (
+                  <div className="rounded-3xl border border-slate-200 bg-slate-950 p-4 text-white shadow-inner shadow-slate-950/20 sm:p-5">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
-                        Mã giảm giá / link ưu đãi
-                      </p>
-                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">
-                        Ưu đãi dành cho bạn
-                      </h3>
+                      <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Mã giảm giá / link ưu đãi</p>
+                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">Link ưu đãi 20%, 22%, 25% từ Facebook dành cho bạn</h3>
                     </div>
-                    {resultUrl ? (
+
+                    <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+                      <div className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm leading-6 text-slate-100 sm:text-base sm:leading-7 break-all">
+                        {resultUrl}
+                      </div>
                       <button
                         type="button"
                         onClick={handleCopyLink}
-                        className="pointer-events-auto rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-medium transition hover:bg-white/15 w-full sm:w-auto text-center"
+                        className="pointer-events-auto inline-flex h-12 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-4 text-sm font-medium transition hover:bg-white/15 sm:h-14 sm:px-5"
                       >
                         {isCopied ? "Đã copy" : "Copy link"}
                       </button>
-                    ) : null}
-                  </div>
+                    </div>
 
-                    {resultUrl ? (
                     <a
-                        href={resultUrl}
+                      href={resultUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={handleOpenShopee}
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
-                        Mở bằng app Shopee
+                      Mua ngay trên Shopee
                     </a>
-                  ) : null}
 
-                  <div className="mt-4 break-all rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-6 text-slate-100 sm:text-base sm:leading-7">
-                    {resultUrl
-                      ? formatDisplayUrl(resultUrl)
-                      : "Mã giảm giá hoặc link ưu đãi sẽ hiển thị ở đây sau khi xem."}
+                    <button
+                      type="button"
+                      onClick={handleOpenFacebookPost}
+                      className="pointer-events-auto mt-3 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-blue-300 bg-blue-600 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(37,99,235,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
+                    >
+                      Mở bài viết Facebook cmt nhận voucher
+                    </button>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
