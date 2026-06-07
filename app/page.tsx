@@ -126,40 +126,10 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(251,146,60,0.22),_transparent_34%),radial-gradient(circle_at_right,_rgba(59,130,246,0.18),_transparent_28%),linear-gradient(180deg,_#fffdf8_0%,_#fff7ed_100%)] text-slate-950">
       <div className="hidden sm:block pointer-events-none absolute inset-0 z-0 opacity-60 [background-image:linear-gradient(rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.04)_1px,transparent_1px)] [background-size:36px_36px]" />
       <div className="relative mx-auto flex min-h-screen w-full max-w-7xl items-start px-4 py-4 sm:px-6 sm:py-8 lg:items-center lg:px-12 lg:py-10">
-        <section className="grid w-full gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-          <div className="order-2 flex flex-col justify-center gap-6 lg:order-1">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-orange-200/80 bg-white/80 px-3 py-1.5 text-xs font-medium text-orange-700 shadow-sm backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-orange-500" />
-              Săn mã giảm giá Shopee hôm nay
-            </div>
+        <section className="mx-auto flex w-full max-w-2xl flex-col gap-6">
+          
 
-           
-
-            <div className="max-w-2xl rounded-3xl border-2 border-orange-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-5 shadow-[0_24px_60px_rgba(249,115,22,0.26)] backdrop-blur">
-              <div className="inline-flex w-fit items-center rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white">
-                Hướng dẫn nhanh
-              </div>
-              <div className="mt-3 text-base font-semibold text-slate-900 sm:text-lg">
-                Làm theo 4 bước sau để thấy mã nhanh hơn
-              </div>
-              <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-800 sm:text-base">
-                <li><span className="font-bold text-orange-700">B1.</span> Vào Shopee và copy link sản phẩm cần mua.</li>
-                <li><span className="font-bold text-orange-700">B2.</span> Dán link vào rồi bấm Lấy liên kết khuyến mãi.</li>
-                <li><span className="font-bold text-orange-700">B3.</span> Copy link kết quả và cmt tại bài viết: <a className="font-semibold text-orange-700 underline decoration-orange-400 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a> (Có thể cmt ẩn danh).</li>
-                <li><span className="font-bold text-orange-700">B4.</span> Mở lại link đã cmt để chọn voucher và đặt mua.</li>
-                <li>
-                  <span className="inline-block rounded-lg bg-orange-50 border border-orange-200 px-3 py-2 text-sm font-semibold text-orange-800">
-                    Có thể mở trực tiếp link qua ứng dụng Shopee để có 1 số ưu đãi khác
-                  </span>
-                </li>
-              </ol>
-              <div className="mt-4 rounded-2xl border border-orange-300 bg-orange-100 px-3 py-2 text-sm font-medium text-orange-900">
-                Lưu ý: Nếu chưa thấy mã, hãy thử lại vào các khung giờ 0h, 9h, 15h, 20h.
-              </div>
-            </div>
-          </div>
-
-          <div className="relative order-1 lg:order-2">
+          <div className="relative">
             <div className="hidden sm:block absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-orange-300 via-orange-100 to-amber-200 blur-2xl" />
             <div className="relative z-20 rounded-[2rem] border-2 border-orange-200 bg-white/95 p-4 shadow-[0_30px_100px_rgba(249,115,22,0.2)] backdrop-blur-xl sm:p-6 lg:p-7">
               <div className="flex items-start justify-between gap-4">
@@ -201,7 +171,7 @@ export default function Home() {
                   <div className="rounded-3xl border border-slate-200 bg-slate-950 p-4 text-white shadow-inner shadow-slate-950/20 sm:p-5">
                     <div>
                       <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Mã giảm giá / link ưu đãi</p>
-                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">Link ưu đãi 20%, 22%, 25% từ Facebook dành cho bạn</h3>
+                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">Link ưu đãi 20%, 22%, 25% từ Facebook, MXH dành cho bạn</h3>
                     </div>
 
                     <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -224,7 +194,7 @@ export default function Home() {
                       onClick={handleOpenShopee}
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
-                      Mua ngay trên Shopee
+                      Mua ngay trên Shopee nhận ưu đãi MXH
                     </a>
 
                     <button
@@ -236,6 +206,37 @@ export default function Home() {
                     </button>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center gap-6">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-orange-200/80 bg-white/80 px-3 py-1.5 text-xs font-medium text-orange-700 shadow-sm backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-orange-500" />
+              Săn mã giảm giá Shopee hôm nay
+            </div>
+
+           
+
+            <div className="max-w-2xl rounded-3xl border-2 border-orange-400 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-5 shadow-[0_24px_60px_rgba(249,115,22,0.26)] backdrop-blur">
+              <div className="inline-flex w-fit items-center rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white">
+                Hướng dẫn nhanh
+              </div>
+              <div className="mt-3 text-base font-semibold text-slate-900 sm:text-lg">
+                Làm theo 4 bước sau để thấy mã nhanh hơn
+              </div>
+              <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-800 sm:text-base">
+                <li><span className="font-bold text-orange-700">B1.</span> Vào Shopee và copy link sản phẩm cần mua.</li>
+                <li><span className="font-bold text-orange-700">B2.</span> Dán link vào rồi bấm Lấy liên kết khuyến mãi.</li>
+                <li><span className="font-bold text-orange-700">B3.</span> Copy link kết quả và cmt tại bài viết: <a className="font-semibold text-orange-700 underline decoration-orange-400 underline-offset-4" href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">Mở bài viết Facebook</a> (Có thể cmt ẩn danh).</li>
+                <li><span className="font-bold text-orange-700">B4.</span> Mở lại link đã cmt để chọn voucher và đặt mua.</li>
+                <li>
+                  <span className="inline-block rounded-lg bg-orange-50 border border-orange-200 px-3 py-2 text-sm font-semibold text-orange-800">
+                    Có thể mở trực tiếp link qua ứng dụng Shopee để có 1 số ưu đãi khác
+                  </span>
+                </li>
+              </ol>
+              <div className="mt-4 rounded-2xl border border-orange-300 bg-orange-100 px-3 py-2 text-sm font-medium text-orange-900">
+                Lưu ý: Nếu chưa thấy mã, hãy thử lại vào các khung giờ 0h, 9h, 15h, 20h.
               </div>
             </div>
           </div>
