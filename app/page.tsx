@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState, useRef } from "react";
 
 const FACEBOOK_LINK =
@@ -135,7 +136,7 @@ export default function Home() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">
-                    TẠO LINK ƯU ĐÃI SHOPEE
+                    SĂN SALE RẺ SHOPEE - MÃ GIẢM GIÁ 22%, 25%
                   </p>
                 </div>
               </div>
@@ -144,7 +145,7 @@ export default function Home() {
               <div className="mt-6 space-y-4">
                 <label className="block space-y-2">
                   <span className="text-sm font-semibold text-slate-800 sm:text-base">
-                    Dán link sản phẩm Shopee vào đây
+                    Dán link sản phẩm Shopee để lấy mã giảm giá 22%, 25%, voucher và ưu đãi tốt nhất
                   </span>
                   <input
                     value={inputUrl}
@@ -161,7 +162,7 @@ export default function Home() {
                       disabled={isLoading}
                       className="w-full rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_24px_rgba(249,115,22,0.28)] transition hover:brightness-105 disabled:opacity-60 disabled:cursor-wait"
                     >
-                      {isLoading ? "Đang tạo liên kết..." : "Lấy liên kết khuyến mãi"}
+                      {isLoading ? "Đang tạo liên kết..." : "Lấy mã giảm giá Shopee 22%/25%"}
                     </button>
                   </div>
 
@@ -171,7 +172,7 @@ export default function Home() {
                   <div className="rounded-3xl border border-slate-200 bg-slate-950 p-4 text-white shadow-inner shadow-slate-950/20 sm:p-5">
                     <div>
                       <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Mã giảm giá / link ưu đãi</p>
-                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">Link ưu đãi 20%, 22%, 25% từ Facebook, MXH dành cho bạn</h3>
+                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">Link ưu đãi Shopee 20%, 22%, 25% từ Facebook, MXH dành cho bạn</h3>
                     </div>
 
                     <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -209,6 +210,32 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className="rounded-[2rem] border border-orange-200/70 bg-gradient-to-br from-orange-50 via-white to-amber-50 p-5 shadow-[0_24px_60px_rgba(249,115,22,0.16)] backdrop-blur sm:p-7">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600">
+                  TẢI VIDEO HÀNG LOẠT TIKTOK KHÔNG DÍNH LOGO
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold text-slate-950">
+                  Muốn tải video TikTok hàng loạt không dính logo, đẹp và nhanh? Chuyển sang công cụ tải video TikTok riêng ngay bên dưới.
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  Hỗ trợ nhập nhiều link TikTok, xử lý hàng loạt và tải video không logo trực tiếp trên điện thoại.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 sm:min-w-[220px]">
+                <Link
+                  href="/download"
+                  className="inline-flex items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(249,115,22,0.2)] transition hover:brightness-105"
+                >
+                  Đi tới trang tải video
+                </Link>
+                
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-col justify-center gap-6">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-orange-200/80 bg-white/80 px-3 py-1.5 text-xs font-medium text-orange-700 shadow-sm backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-orange-500" />
