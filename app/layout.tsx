@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://sandealvip.com";
-const SITE_NAME = "SanDealVIP";
+const SITE_NAME = "SanDealVIP - Tiện Ích Săn Sale & Tải Video TikTok HD Không Logo";
 const SITE_DESCRIPTION = "Nền tảng tiện ích đa năng: Tự động chuyển đổi link nhận mã giảm giá Shopee 22%-25% và công cụ tải video TikTok HD không logo miễn phí.";
 
 // 1. Cấu hình Viewport (Tách riêng theo chuẩn Next.js mới)
