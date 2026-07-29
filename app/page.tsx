@@ -226,7 +226,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-2 sm:min-w-[220px]">
                 <Link
-                  href="/download"
+                  href="/tai-video-tiktok"
                   className="inline-flex items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(249,115,22,0.2)] transition hover:brightness-105"
                 >
                   Đi tới trang tải video

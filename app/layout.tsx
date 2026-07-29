@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,60 +13,43 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Săn Sale Rẻ Shopee | Mã Giảm Giá 22%, 25% & Voucher Shopee",
-  description:
-    "Tạo link ưu đãi Shopee, tìm mã giảm giá 22%, 25%, voucher Shopee, freeship và deal hot mỗi ngày tại sandealvip.com.",
-  alternates: {
-    canonical: "https://sandealvip.com",
-  },
+const SITE_URL = "https://sandealvip.com";
+const SITE_NAME = "SanDealVIP";
+const SITE_DESCRIPTION = "Nền tảng tiện ích đa năng: Tự động chuyển đổi link nhận mã giảm giá Shopee 22%-25% và công cụ tải video TikTok HD không logo miễn phí.";
+
+// 1. Cấu hình Viewport (Tách riêng theo chuẩn Next.js mới)
+export const viewport: Viewport = {
+  themeColor: "#fb923c",
 };
 
-const SITE_URL = "https://sandealvip.com";
-
-export const seoMetadata: Metadata = {
-  title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
-  description:
-    "Tạo link ưu đãi Shopee, tìm mã giảm giá, voucher, freeship và deal hot mỗi ngày tại sandealvip.com.",
+// 2. Cấu hình SEO Metadata
+export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: "Săn Mã Shopee",
+  title: {
+    default: "Săn Mã Giảm Giá Shopee & Tải Video TikTok Không Logo | SanDealVIP",
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
   keywords: [
     "mã giảm giá shopee",
-    "mã giảm giá shopee hôm nay",
-    "mã giảm giá shopee mới nhất",
-    "mã giảm 22% shopee",
-    "mã giảm 25% shopee",
-    "voucher shopee",
-    "voucher shopee hôm nay",
-    "voucher shopee mới nhất",
-    "mã freeship shopee",
-    "mã hoàn xu shopee",
-    "flash sale shopee",
-    "deal hot shopee",
+    "chuyển đổi link shopee",
+    "link ưu đãi shopee",
+    "voucher shopee 22%",
+    "voucher shopee 25%",
     "săn sale shopee",
-    "ưu đãi shopee",
-    "khuyến mãi shopee",
-    "coupon shopee",
-    "deal shopee",
-    "săn sale rẻ shopee",
-    "săn deal shopee",
-    "tải video hàng loạt tiktok không logo",
-    "tải video tiktok không dính logo",
-    "mã giảm giá lazada",
-    "mã giảm giá tiktok shop",
-    "coupon mua sắm",
-    "deal giá tốt",
-    "sandealvip.com",
+    "tải video tiktok không logo",
+    "tải video tiktok hd",
+    "download tiktok mp4",
     "sandealvip",
-    "săn deal vip",
-    "mã giảm giá online",
-    "voucher giảm giá",
   ],
-  authors: [{ name: "CustomLink" }],
+  alternates: {
+    canonical: "/",
+  },
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -75,25 +59,34 @@ export const seoMetadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
-    description:
-      "Tạo link ưu đãi Shopee, tìm mã giảm giá, voucher, freeship và deal hot mỗi ngày tại sandealvip.com.",
+    title: "Tiện Ích SanDealVIP | Săn Sale Shopee & Tải TikTok Không Logo",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: "Mã Giảm Giá Shopee & Deal Hot Mỗi Ngày",
-    images: [{ url: `${SITE_URL}/og-image.svg`, width: 1200, height: 630, alt: "Săn mã giảm giá Shopee hôm nay" }],
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Công cụ Săn Sale Shopee và Tải Video TikTok",
+      },
+    ],
     locale: "vi_VN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mã Giảm Giá Shopee Hôm Nay | sandealvip.com",
-    description:
-      "Tạo link ưu đãi Shopee, tìm mã giảm giá, voucher, freeship và deal hot mỗi ngày tại sandealvip.com.",
-    images: [`${SITE_URL}/og-image.svg`],
+    title: "Tiện Ích SanDealVIP | Săn Sale Shopee & Tải TikTok Không Logo",
+    description: SITE_DESCRIPTION,
+    images: ["/og-image.svg"],
   },
   icons: {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
+  },
+  verification: {
+    // Thay bằng mã xác minh Google Search Console của bạn
+    google: "NHẬP_MÃ_GOOGLE_SEARCH_CONSOLE_VAO_DAY",
   },
 };
 
@@ -102,35 +95,77 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 3. Schema JSON-LD đa ứng dụng
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
+        description: SITE_DESCRIPTION,
+        inLanguage: "vi-VN",
+      },
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: `${SITE_URL}/og-image.svg`,
+        sameAs: [],
+      },
+      {
+        "@type": "WebApplication",
+        "@id": `${SITE_URL}/#shopee-tool`,
+        name: "Công cụ tạo link ưu đãi và săn mã Shopee",
+        url: SITE_URL,
+        applicationCategory: "ShoppingApplication",
+        description: "Công cụ tự động chuyển đổi link Shopee để lấy mã giảm giá 22%, 25% và Freeship.",
+        operatingSystem: "All",
+      },
+      {
+        "@type": "WebApplication",
+        "@id": `${SITE_URL}/#tiktok-tool`,
+        name: "Công cụ tải video TikTok không logo",
+        url: SITE_URL,
+        applicationCategory: "MultimediaApplication",
+        description: "Tiện ích tải video TikTok chất lượng HD, không dính logo miễn phí.",
+        operatingSystem: "All",
+      },
+    ],
+  };
+
   return (
     <html
       lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.svg" />
-        <meta name="theme-color" content="#fb923c" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="google-site-verification" content="" />
-      </head>
       <body className="min-h-full flex flex-col">
         {children}
 
-        {/* JSON-LD Organization (update values for production) */}
+        {/* Chèn JSON-LD Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Săn Mã Shopee",
-              url: SITE_URL,
-              logo: `${SITE_URL}/og-image.svg`,
-              sameAs: [],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+
+        {/* Chèn Google Analytics chuẩn SEO (Không làm chậm web) */}
+        {/* Bỏ comment và điền mã G-XXXXX của bạn khi cần */}
+        {/*
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-MÃ_CỦA_BẠN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MÃ_CỦA_BẠN');
+          `}
+        </Script>
+        */}
       </body>
     </html>
   );
