@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,36 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://sandealvip.com";
-const SITE_NAME = "SanDealVIP - Tiện Ích Săn Sale & Tải Video TikTok HD Không Logo";
-const SITE_DESCRIPTION = "Nền tảng tiện ích đa năng: Tự động chuyển đổi link nhận mã giảm giá Shopee 22%-25% và công cụ tải video TikTok HD không logo miễn phí.";
+const SITE_NAME = "SanDealVIP";
+const SITE_DESCRIPTION =
+  "Tạo link ưu đãi từ sản phẩm Shopee, sau đó làm theo hướng dẫn để nhận voucher. Mã và mức giảm tùy điều kiện của Shopee.";
 
-// 1. Cấu hình Viewport (Tách riêng theo chuẩn Next.js mới)
 export const viewport: Viewport = {
   themeColor: "#fb923c",
 };
 
-// 2. Cấu hình SEO Metadata
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Săn Mã Giảm Giá Shopee & Tải Video TikTok Không Logo | SanDealVIP",
+    default: "Mã giảm giá Shopee: Tạo link ưu đãi | SanDealVIP",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
-  keywords: [
-    "mã giảm giá shopee",
-    "chuyển đổi link shopee",
-    "link ưu đãi shopee",
-    "voucher shopee 22%",
-    "voucher shopee 25%",
-    "săn sale shopee",
-    "tải video tiktok không logo",
-    "tải video tiktok hd",
-    "download tiktok mp4",
-    "sandealvip",
-  ],
   alternates: {
     canonical: "/",
   },
@@ -59,7 +45,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Tiện Ích SanDealVIP | Săn Sale Shopee & Tải TikTok Không Logo",
+    title: "Mã giảm giá Shopee: Tạo link ưu đãi | SanDealVIP",
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -68,7 +54,7 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Công cụ Săn Sale Shopee và Tải Video TikTok",
+        alt: "Công cụ săn sale Shopee SanDealVIP",
       },
     ],
     locale: "vi_VN",
@@ -76,17 +62,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tiện Ích SanDealVIP | Săn Sale Shopee & Tải TikTok Không Logo",
+    title: "Tiện Ích SanDealVIP | Săn Sale Shopee",
     description: SITE_DESCRIPTION,
     images: ["/og-image.svg"],
   },
   icons: {
     icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
-  },
-  verification: {
-    // Thay bằng mã xác minh Google Search Console của bạn
-    google: "NHẬP_MÃ_GOOGLE_SEARCH_CONSOLE_VAO_DAY",
   },
 };
 
@@ -95,7 +76,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // 3. Schema JSON-LD đa ứng dụng
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -112,8 +92,6 @@ export default function RootLayout({
         "@id": `${SITE_URL}/#organization`,
         name: SITE_NAME,
         url: SITE_URL,
-        logo: `${SITE_URL}/og-image.svg`,
-        sameAs: [],
       },
       {
         "@type": "WebApplication",
@@ -121,16 +99,7 @@ export default function RootLayout({
         name: "Công cụ tạo link ưu đãi và săn mã Shopee",
         url: SITE_URL,
         applicationCategory: "ShoppingApplication",
-        description: "Công cụ tự động chuyển đổi link Shopee để lấy mã giảm giá 22%, 25% và Freeship.",
-        operatingSystem: "All",
-      },
-      {
-        "@type": "WebApplication",
-        "@id": `${SITE_URL}/#tiktok-tool`,
-        name: "Công cụ tải video TikTok không logo",
-        url: SITE_URL,
-        applicationCategory: "MultimediaApplication",
-        description: "Tiện ích tải video TikTok chất lượng HD, không dính logo miễn phí.",
+        description: SITE_DESCRIPTION,
         operatingSystem: "All",
       },
     ],
@@ -144,28 +113,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
 
-        {/* Chèn JSON-LD Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-
-        {/* Chèn Google Analytics chuẩn SEO (Không làm chậm web) */}
-        {/* Bỏ comment và điền mã G-XXXXX của bạn khi cần */}
-        {/*
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-MÃ_CỦA_BẠN"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MÃ_CỦA_BẠN');
-          `}
-        </Script>
-        */}
       </body>
     </html>
   );

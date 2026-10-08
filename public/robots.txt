@@ -1,5 +1,0 @@
-User-agent: *
-Disallow:
-
-# Sitemap location (update domain)
-Sitemap: https://example.com/sitemap.xml

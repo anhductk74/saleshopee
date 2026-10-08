@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 const FACEBOOK_LINK =
   "https://www.facebook.com/groups/1313703766898681/posts/1313708710231520/?__cft__[0]=AZaTI8mQjzHWCNtLTrvPChbmdpuTb0OGWeKX9dvNVhFzaIWb0GEcH1Nms5lFuYlWzu-2t7z7WhkOsIswrBmnfK5X8SlYAcww1iCpT7UjYEnrDY6Bw-Y1WJY6P2QR7RDZ-kSlGLW3HgKIvQq6ln3P9G4fhPeji8RI6keXdGgQ2h6LQzU6YJsPCPbDLfR09_TdPL7Kd_z24UHJ7xzLQyHWxHWI&__tn__=-UK-R";
@@ -18,19 +17,10 @@ export default function Home() {
   const [inputUrl, setInputUrl] = useState("");
   const [resultUrl, setResultUrl] = useState("");
   const [sourceInputUrl, setSourceInputUrl] = useState("");
-  const [statusMessage, setStatusMessage] = useState(
-    "Dán link sản phẩm Shopee để xem ưu đãi phù hợp."
-  );
+  const [statusMessage, setStatusMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const invokeGuard = useRef(false);
-
-  function formatDisplayUrl(url: string) {
-    if (!url) return "";
-    if (url.length <= 48) return url;
-
-    return `${url.slice(0, 30)}...${url.slice(-12)}`;
-  }
 
   async function handleCreateLink() {
     if (invokeGuard.current) return;
@@ -50,7 +40,6 @@ export default function Home() {
     setStatusMessage("Đang tìm ưu đãi cho bạn...");
 
     try {
-      console.log("handleCreateLink invoked", trimmedUrl);
       const response = await fetch(
         `/api/convert?url=${encodeURIComponent(trimmedUrl)}`,
         {
@@ -60,7 +49,6 @@ export default function Home() {
       );
 
       if (!response.ok) {
-        // include response body to help debug network/server errors from mobile
         const text = await response.text();
         throw new Error(`API lỗi ${response.status}: ${text}`);
       }
@@ -135,8 +123,11 @@ export default function Home() {
             <div className="relative z-20 rounded-[2rem] border-2 border-orange-200 bg-white/95 p-4 shadow-[0_30px_100px_rgba(249,115,22,0.2)] backdrop-blur-xl sm:p-6 lg:p-7">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-600">
-                    SĂN SALE RẺ SHOPEE - MÃ GIẢM GIÁ 22%, 25%
+                  <h1 className="text-2xl font-bold text-slate-950 sm:text-3xl">
+                    Tạo link ưu đãi Shopee, tìm mã giảm giá
+                  </h1>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    Dán link sản phẩm Shopee rồi làm theo hướng dẫn để nhận voucher từ bài viết Facebook. Mã và mức giảm tùy điều kiện của Shopee.
                   </p>
                 </div>
               </div>
@@ -145,7 +136,7 @@ export default function Home() {
               <div className="mt-6 space-y-4">
                 <label className="block space-y-2">
                   <span className="text-sm font-semibold text-slate-800 sm:text-base">
-                    Dán link sản phẩm Shopee để lấy mã giảm giá 22%, 25%, voucher và ưu đãi tốt nhất
+                    Dán link sản phẩm Shopee để tạo link ưu đãi
                   </span>
                   <input
                     value={inputUrl}
@@ -162,17 +153,24 @@ export default function Home() {
                       disabled={isLoading}
                       className="w-full rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_24px_rgba(249,115,22,0.28)] transition hover:brightness-105 disabled:opacity-60 disabled:cursor-wait"
                     >
-                      {isLoading ? "Đang tạo liên kết..." : "Lấy mã giảm giá Shopee 22%/25%"}
+                      {isLoading ? "Đang tạo liên kết..." : "Tạo link ưu đãi Shopee"}
                     </button>
                   </div>
 
-                  
+                {statusMessage && (
+                  <p role="status" aria-live="polite" className="text-sm text-slate-700">
+                    {statusMessage}
+                  </p>
+                )}
 
                 {resultUrl && (
                   <div className="rounded-3xl border border-slate-200 bg-slate-950 p-4 text-white shadow-inner shadow-slate-950/20 sm:p-5">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Mã giảm giá / link ưu đãi</p>
-                      <h3 className="mt-2 text-lg font-semibold sm:text-xl">Link ưu đãi Shopee 20%, 22%, 25% từ Facebook, MXH dành cho bạn</h3>
+                      <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Link ưu đãi đã tạo</p>
+                      <h2 className="mt-2 text-lg font-semibold sm:text-xl">Link sản phẩm Shopee đã chuyển đổi</h2>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">
+                        Sao chép link này và làm theo hướng dẫn bên dưới để nhận voucher. Mã áp dụng tùy chương trình.
+                      </p>
                     </div>
 
                     <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -195,7 +193,7 @@ export default function Home() {
                       onClick={handleOpenShopee}
                       className="pointer-events-auto mt-4 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(249,115,22,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
-                      Mua ngay trên Shopee nhận ưu đãi MXH
+                      Mở link trên Shopee
                     </a>
 
                     <button
@@ -203,35 +201,10 @@ export default function Home() {
                       onClick={handleOpenFacebookPost}
                       className="pointer-events-auto mt-3 inline-flex h-12 w-full items-center justify-center rounded-2xl border border-blue-300 bg-blue-600 px-4 text-sm font-semibold text-white shadow-[0_12px_20px_rgba(37,99,235,0.18)] transition hover:brightness-105 sm:h-14 sm:text-base"
                     >
-                      Mở bài viết Facebook cmt nhận voucher
+                      Mở bài viết Facebook để nhận voucher
                     </button>
                   </div>
                 )}
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-orange-200/70 bg-gradient-to-br from-orange-50 via-white to-amber-50 p-5 shadow-[0_24px_60px_rgba(249,115,22,0.16)] backdrop-blur sm:p-7">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="max-w-xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600">
-                  TẢI VIDEO HÀNG LOẠT TIKTOK KHÔNG DÍNH LOGO
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold text-slate-950">
-                  Muốn tải video TikTok hàng loạt không dính logo, đẹp và nhanh? Chuyển sang công cụ tải video TikTok riêng ngay bên dưới.
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Hỗ trợ nhập nhiều link TikTok, xử lý hàng loạt và tải video không logo trực tiếp trên điện thoại.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 sm:min-w-[220px]">
-                <Link
-                  href="/tai-video-tiktok"
-                  className="inline-flex items-center justify-center rounded-2xl border border-orange-300/40 bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(249,115,22,0.2)] transition hover:brightness-105"
-                >
-                  Đi tới trang tải video
-                </Link>
-                
               </div>
             </div>
           </div>
@@ -249,7 +222,7 @@ export default function Home() {
                 Hướng dẫn nhanh
               </div>
               <div className="mt-3 text-base font-semibold text-slate-900 sm:text-lg">
-                Làm theo 4 bước sau để thấy mã nhanh hơn
+                Cách nhận voucher Shopee từ bài viết Facebook
               </div>
               <ol className="mt-4 space-y-2 text-sm leading-6 text-slate-800 sm:text-base">
                 <li><span className="font-bold text-orange-700">B1.</span> Vào Shopee và copy link sản phẩm cần mua.</li>
