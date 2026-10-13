@@ -15,7 +15,9 @@ const geistMono = Geist_Mono({
 const SITE_URL = "https://sandealvip.com";
 const SITE_NAME = "SanDealVIP";
 const SITE_DESCRIPTION =
-  "Tạo link ưu đãi từ sản phẩm Shopee, sau đó làm theo hướng dẫn để nhận voucher. Mã và mức giảm tùy điều kiện của Shopee.";
+  "SanDealVIP giúp bạn săn mã giảm giá, voucher và ưu đãi Shopee. Khám phá deal hấp dẫn, tạo link ưu đãi và tiết kiệm khi mua sắm.";
+const SITE_TITLE =
+  "Săn Deal Shopee: Mã Giảm Giá, Voucher & Ưu Đãi | SanDealVIP";
 
 export const viewport: Viewport = {
   themeColor: "#fb923c",
@@ -24,7 +26,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Mã giảm giá Shopee: Tạo link ưu đãi | SanDealVIP",
+    default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Mã giảm giá Shopee: Tạo link ưu đãi | SanDealVIP",
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -62,12 +64,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tiện Ích SanDealVIP | Săn Sale Shopee",
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     images: ["/og-image.svg"],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/Glossy%20S%20Deal%20Icon%20with%20Crown%20and%20Tag.png",
   },
 };
 
@@ -96,7 +98,7 @@ export default function RootLayout({
       {
         "@type": "WebApplication",
         "@id": `${SITE_URL}/#shopee-tool`,
-        name: "Công cụ tạo link ưu đãi và săn mã Shopee",
+        name: "Công cụ săn deal và mã giảm giá Shopee",
         url: SITE_URL,
         applicationCategory: "ShoppingApplication",
         description: SITE_DESCRIPTION,
