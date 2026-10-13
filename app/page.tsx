@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 
@@ -129,13 +130,13 @@ export default function Home() {
       <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 sm:px-6">
         <header className="flex items-center justify-between py-5 sm:py-7">
           <Link href="/" className="inline-flex items-center gap-2.5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-600">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500 text-white shadow-lg shadow-orange-500/25">
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-                <path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="10" cy="20" r="1" fill="currentColor" />
-                <circle cx="18" cy="20" r="1" fill="currentColor" />
-              </svg>
-            </span>
+            <Image
+              src="/Glossy%20S%20Deal%20Icon%20with%20Crown%20and%20Tag.png"
+              alt="SanDealVIP"
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-xl shadow-lg shadow-orange-900/20"
+            />
             <span className="text-lg font-extrabold tracking-tight text-slate-900">SanDeal<span className="text-orange-600">VIP</span></span>
           </Link>
           <span className="hidden items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-3.5 py-2 text-xs font-semibold text-orange-800 shadow-sm sm:inline-flex">
@@ -348,6 +349,59 @@ export default function Home() {
               </p>
             </div>
           </aside>
+        </section>
+
+        <section
+          aria-labelledby="facebook-deals-title"
+          className="mb-10 overflow-hidden rounded-[2rem] border border-orange-200/80 bg-gradient-to-br from-white via-orange-50 to-blue-50 p-5 shadow-[0_24px_70px_rgba(124,45,18,0.10)] sm:p-8 lg:p-10"
+        >
+          <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
+            <div className="text-center lg:text-left">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600">
+                Ưu đãi nổi bật
+              </p>
+              <h2
+                id="facebook-deals-title"
+                className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Săn mã giảm giá trên Facebook
+              </h2>
+              <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-slate-600 sm:text-base lg:mx-0">
+                Khám phá các mã ưu đãi được chia sẻ trong bài viết Facebook và
+                làm theo hướng dẫn để tìm voucher phù hợp.
+              </p>
+              <a
+                href={FACEBOOK_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+              >
+                Khám phá ưu đãi trên Facebook
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-4 w-4"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.22 14.78a.75.75 0 0 1 0-1.06l7.97-7.97H7.5a.75.75 0 0 1 0-1.5H15a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0V6.81l-7.97 7.97a.75.75 0 0 1-1.06 0Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div className="mx-auto overflow-hidden rounded-3xl bg-slate-950 p-1.5 shadow-2xl shadow-blue-950/20">
+              <Image
+                src="/Facebook%20Discount%20Coupon%20Bonanza.png"
+                alt="Poster săn mã giảm giá 20%, 22% và 25% qua Facebook"
+                width={941}
+                height={1672}
+                className="block h-auto w-full max-w-[280px] rounded-[1.25rem] sm:max-w-[320px]"
+                sizes="(max-width: 640px) 280px, 320px"
+              />
+            </div>
+          </div>
         </section>
 
         <footer className="border-t border-orange-200/70 py-5 text-center text-xs text-slate-500">
