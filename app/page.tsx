@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 
 const FACEBOOK_LINK =
-  "https://www.facebook.com/groups/1313703766898681/posts/1313708710231520/?__cft__[0]=AZaTI8mQjzHWCNtLTrvPChbmdpuTb0OGWeKX9dvNVhFzaIWb0GEcH1Nms5lFuYlWzu-2t7z7WhkOsIswrBmnfK5X8SlYAcww1iCpT7UjYEnrDY6Bw-Y1WJY6P2QR7RDZ-kSlGLW3HgKIvQq6ln3P9G4fhPeji8RI6keXdGgQ2h6LQzU6YJsPCPbDLfR09_TdPL7Kd_z24UHJ7xzLQyHWxHWI&__tn__=-UK-R";
+  "https://www.facebook.com/groups/1085987650911970/permalink/1085999790910756/";
 const CLICK_LOG_API = "/api/click-log";
 
 type ApiResponse = {
