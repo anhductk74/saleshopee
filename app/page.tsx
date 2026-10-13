@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useRef } from "react";
 
 const FACEBOOK_LINK =
-  "https://www.facebook.com/groups/1085987650911970/permalink/1085999790910756/";
+  "https://www.facebook.com/share/p/1VekAJxwGW/?mibextid=wwXIfr";
 const CLICK_LOG_API = "/api/click-log";
 
 type ApiResponse = {
