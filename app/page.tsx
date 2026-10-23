@@ -8,16 +8,31 @@ const FACEBOOK_LINK =
   "https://www.facebook.com/share/p/1VekAJxwGW/?mibextid=wwXIfr";
 const CLICK_LOG_API = "/api/click-log";
 
+type ProductInfo = {
+  productName?: string;
+  shopName?: string;
+  imageUrl?: string;
+  price?: number;
+};
+
 type ApiResponse = {
   success?: boolean;
   url?: string;
-  affiliateLink?: string;
+  finalUrl?: string;
+  productInfo?: ProductInfo | null;
+  productMessage?: string;
   message?: string;
 };
+
+function formatVnd(value: number) {
+  return `${new Intl.NumberFormat("vi-VN").format(value)}đ`;
+}
 
 export default function Home() {
   const [inputUrl, setInputUrl] = useState("");
   const [resultUrl, setResultUrl] = useState("");
+  const [productInfo, setProductInfo] = useState<ProductInfo | null>(null);
+  const [productMessage, setProductMessage] = useState("");
   const [sourceInputUrl, setSourceInputUrl] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +47,8 @@ export default function Home() {
 
     if (!trimmedUrl) {
       setResultUrl("");
+      setProductInfo(null);
+      setProductMessage("");
       setSourceInputUrl("");
       setStatusMessage("Vui lòng nhập link Shopee để xem mã giảm giá và ưu đãi.");
       invokeGuard.current = false;
@@ -40,9 +57,11 @@ export default function Home() {
 
     setIsLoading(true);
     setResultUrl("");
+    setProductInfo(null);
+    setProductMessage("");
     setSourceInputUrl("");
     setIsCopied(false);
-    setStatusMessage("Đang tìm ưu đãi cho bạn...");
+    setStatusMessage("Đang chuyển đổi link và tìm ưu đãi cho bạn...");
 
     try {
       const response = await fetch(
@@ -53,24 +72,27 @@ export default function Home() {
         }
       );
 
-      if (!response.ok) {
-        const text = await response.text();
-        throw new Error(`API lỗi ${response.status}: ${text}`);
-      }
-
       const data = (await response.json()) as ApiResponse;
 
-      if (!data.success || !data.affiliateLink) {
+      if (!response.ok) {
+        throw new Error(data.message ?? `API lỗi ${response.status}.`);
+      }
+
+      if (!data.success || !data.finalUrl) {
         throw new Error(data.message ?? "Không tìm thấy ưu đãi phù hợp.");
       }
 
-      setResultUrl(data.affiliateLink);
+      setResultUrl(data.finalUrl);
+      setProductInfo(data.productInfo ?? null);
+      setProductMessage(data.productMessage ?? "");
       setSourceInputUrl(trimmedUrl);
       setInputUrl("");
-      setStatusMessage("Đã có link ưu đãi. Bạn có thể copy ngay bên dưới.");
+      setStatusMessage("Đã hoàn tất chuyển đổi link. Bạn có thể copy link cuối cùng bên dưới.");
     } catch (error) {
       const message = error instanceof Error ? error.message : "Có lỗi xảy ra.";
       setResultUrl("");
+      setProductInfo(null);
+      setProductMessage("");
       setSourceInputUrl("");
       setStatusMessage(message);
     } finally {
@@ -210,7 +232,7 @@ export default function Home() {
                         <circle cx="12" cy="12" r="9" stroke="currentColor" strokeOpacity=".3" strokeWidth="3" />
                         <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
                       </svg>
-                      Đang tìm ưu đãi...
+                      Đang chuyển đổi link...
                     </>
                   ) : (
                     <>
@@ -281,6 +303,45 @@ export default function Home() {
                     </svg>
                   </button>
                 </div>
+              )}
+
+              {resultUrl && productInfo && (
+                <section
+                  aria-label="Thông tin sản phẩm"
+                  className="mt-4 flex items-center gap-4 rounded-2xl border border-orange-100 bg-white p-3 shadow-sm sm:gap-5 sm:p-4"
+                >
+                  {productInfo.imageUrl && (
+                    <Image
+                      src={productInfo.imageUrl}
+                      alt={productInfo.productName ?? "Ảnh sản phẩm Shopee"}
+                      width={88}
+                      height={88}
+                      className="h-[5.5rem] w-[5.5rem] shrink-0 rounded-xl bg-orange-50 object-cover"
+                    />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    {productInfo.productName && (
+                      <h3 className="line-clamp-2 text-sm font-bold leading-5 text-slate-900 sm:text-base">
+                        {productInfo.productName}
+                      </h3>
+                    )}
+                    {productInfo.shopName && (
+                      <p className="mt-1 truncate text-xs text-slate-500 sm:text-sm">
+                        {productInfo.shopName}
+                      </p>
+                    )}
+                    {typeof productInfo.price === "number" && (
+                      <p className="mt-2 text-base font-extrabold text-orange-600 sm:text-lg">
+                        {formatVnd(productInfo.price)}
+                      </p>
+                    )}
+                  </div>
+                </section>
+              )}
+              {resultUrl && productMessage && (
+                <p role="status" className="mt-3 text-sm text-amber-800">
+                  {productMessage}
+                </p>
               )}
             </div>
 
